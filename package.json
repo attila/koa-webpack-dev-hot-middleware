@@ -19,14 +19,10 @@
   "author": "Attila Beregszaszi <attila@frontseed.com> (http://attilab.com/)",
   "license": "MIT",
   "dependencies": {
-    "webpack-dev-middleware": "1.8.4",
-    "webpack-hot-middleware": "2.13.2"
+    "webpack-dev-middleware": "^1.10.0",
+    "webpack-hot-middleware": "^2.16.1"
   },
   "devDependencies": {
-    "standard": "8.5.0"
-  },
-  "peerDependencies": {
-    "koa": "1.2.4",
-    "webpack": "1.13.3"
+    "standard": "^8.5.0"
   }
 }

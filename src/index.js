@@ -4,7 +4,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 function middleware (action, request, response) {
   const end = response.end
 
-  return (done) => {
+  return done => {
     response.end = (...args) => {
       end.apply(this, args)
       done()
@@ -18,9 +18,9 @@ function middleware (action, request, response) {
 const webpackDev = (compiler, options) => {
   const action = webpackDevMiddleware(compiler, options)
 
-  return function* dev (next) {
+  return function * dev (next) {
     const step = yield middleware(action, this.req, {
-      end: (content) => {
+      end: content => {
         this.body = content
       },
       setHeader: (...args) => {
@@ -36,7 +36,7 @@ const webpackDev = (compiler, options) => {
 const webpackHot = (compiler, options) => {
   const action = webpackHotMiddleware(compiler, options)
 
-  return function* hot (next) {
+  return function * hot (next) {
     const step = yield middleware(action, this.req, this.res)
     if (step) {
       yield * next
